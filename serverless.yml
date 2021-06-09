@@ -1,0 +1,21 @@
+service: myfake-service
+provider:
+  name: aws
+  region: ap-southeast-2
+  ecr:
+    # In this section you can define images that will be built locally and uploaded to ECR
+    images:
+      myfake-service:
+        path: ./
+
+functions:
+  createCard:
+    image:
+      name: myfake-service
+      command:
+        createCard.handler
+  findName:
+    image:
+      name: myfake-service
+      command:
+        findName.handler
